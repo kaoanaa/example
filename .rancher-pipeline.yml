@@ -19,5 +19,5 @@ stages:
       buildContext: .
       tag: example/app:v1
       pushRemote: true
-      registry: quay.io
+      registry: 127.0.0.1:34593
 timeout: 60
