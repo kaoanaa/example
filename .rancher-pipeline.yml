@@ -3,19 +3,19 @@ stages:
   steps:
   - runScriptConfig:
       image: golang:1.8
-      shellScript: "mkdir -p /go/src/github.com/golang\n\nln -s $(pwd)/example /go/src/github.com/golang/example
+      shellScript: "mkdir -p /go/src/github.com/golang\n\nln -s $(pwd) /go/src/github.com/golang/example
         \ncd  /go/src/github.com/golang/example/outyet\nGODS=linux GOARCH=amd64 CGO_ENABLED=0
         go build -o bin/outyet\n      "
 - name: go-test
   steps:
   - runScriptConfig:
       image: golang:1.8
-      shellScript: "mkdir -p /go/src/github.com/golang\n\nln -s $(pwd)/example /go/src/github.com/golang/example
+      shellScript: "mkdir -p /go/src/github.com/golang\n\nln -s $(pwd) /go/src/github.com/golang/example
         \ncd  /go/src/github.com/golang/example/outyet\ngo test"
 - name: build-image
   steps:
   - publishImageConfig:
-      dockerfilePath: /go/src/github.com/golang/example/outyet/Dockerfile
+      dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example/app:v1
       registry: 127.0.0.1:34593
