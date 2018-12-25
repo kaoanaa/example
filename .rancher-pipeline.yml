@@ -15,7 +15,7 @@ stages:
 - name: build-image
   steps:
   - publishImageConfig:
-      dockerfilePath: ./Dockerfile
+      dockerfilePath: /go/src/github.com/golang/example/outyet/Dockerfile
       buildContext: .
       tag: example/app:v1
       registry: 127.0.0.1:34593
